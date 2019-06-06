@@ -1,0 +1,53 @@
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Style/AsciiComments:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/WordArray:
+  Enabled: false
+Style/AndOr:
+  EnforcedStyle: conditionals
+Style/NumericPredicate:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: literal
+Rails/FilePath:
+  EnforcedStyle: slashes
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Layout/AlignHash:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 25
+Metrics/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Max: 25
+  ExcludedMethods:
+  - 'permitted_attributes'
+Metrics/ClassLength:
+  Max: 160
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+  - '_'
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
