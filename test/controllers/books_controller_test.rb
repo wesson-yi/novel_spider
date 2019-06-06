@@ -1,5 +1,6 @@
 require 'test_helper'
 
+__END__
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)

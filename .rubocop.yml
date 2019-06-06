@@ -31,6 +31,9 @@ Style/EmptyMethod:
   EnforcedStyle: expanded
 Layout/AlignHash:
   EnforcedLastArgumentHashStyle: ignore_implicit
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
 
 Rails/HasAndBelongsToMany:
   Enabled: false
