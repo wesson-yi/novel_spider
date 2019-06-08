@@ -42,6 +42,10 @@ gem 'rubocop'
 
 gem 'active_model_serializers'
 
+gem 'settingslogic'
+
+gem 'rest-client'
+
 group :development, :test do
   # Call 'pry-byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'

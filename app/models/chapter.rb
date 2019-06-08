@@ -1,4 +1,4 @@
 class Chapter < ApplicationRecord
   belongs_to :book
-  # belongs_to :reading_records, foreign_key: :id
+  has_many :reading_records, dependent: :nullify
 end
