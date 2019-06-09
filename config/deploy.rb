@@ -40,11 +40,17 @@ set :rvm_ruby_version, 'ruby-2.6.0'
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
+set :puma_bind, 'tcp://0.0.0.0:3100'
+
 namespace :deploy do
   task :copy_config do
     on roles(:all) do |_host|
       %w[database.yml settings.yml credentials.yml.enc master.key].each do |f|
         upload! 'config/' + f, '/srv/www/novel_spider/shared/config/' + f
+      end
+
+      %w[puma.rb].each do |f|
+        upload! 'config/' + f, '/srv/www/novel_spider/shared/' + f
       end
     end
   end
