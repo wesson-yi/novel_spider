@@ -41,6 +41,7 @@ set :rvm_ruby_version, 'ruby-2.6.0'
 # set :ssh_options, verify_host_key: :secure
 
 set :puma_bind, 'tcp://0.0.0.0:3100'
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 namespace :deploy do
   task :copy_config do
