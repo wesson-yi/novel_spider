@@ -19,8 +19,15 @@
 
 # Learn more: http://github.com/javan/whenever
 
+# Export current PATH to the cron
+env :PATH, ENV['PATH']
+ENV.each { |k, v| env(k, v) }
+
+# set :bundle_command, 'bundle exec'
+# job_type :runner,  "cd :path && :bundle_command rails runner -e :environment ':task' :output"
+
 set :output, './log/cron_log.log'
 
-every 10.minutes do
+every 1.minute do
   runner 'RemindBooksContinued.perform'
 end
