@@ -8,10 +8,18 @@ GET api/books
 ```ruby
 [{
   ywid: 100,
-  latest_chapter_ywid: 1000
+  name: 'book-one-name',
+  latest_chapter: {
+    ywid: 1000,
+    name: 'chapter-name-one'
+  }
 }, {
   ywid: 200,
-  latest_chapter_ywid: 2000
+  name: 'book-two-name'
+  latest_chapter: {
+    ywid: 2000,
+    name: 'chapter-name-two'
+  }
 }]
 ```
 < 200
@@ -24,12 +32,12 @@ POST api/chapters
 {
   book_ywid: 100,
   chapters: [{
-		ywid: 1001,
-		name: 'chapter1001 name'
-  	}, {
-  	ywid: 1002,
- 		name: 'chapter1002 name'
- 	  }]
+    ywid: 1001,
+    name: 'chapter1001-name'
+    }, {
+    ywid: 1002,
+    name: 'chapter1002-name'
+  }]
 }
 ```
 < 201

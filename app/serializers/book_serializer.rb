@@ -1,7 +1,7 @@
 class BookSerializer < ActiveModel::Serializer
-  attributes :ywid, :latest_chapter_ywid
+  attributes :ywid, :name, :latest_chapter
 
-  def latest_chapter_ywid
-    object.chapters.last&.ywid
+  def latest_chapter
+    { ywid: object.chapters.last&.ywid, name: object.chapters.last&.name }
   end
 end
