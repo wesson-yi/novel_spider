@@ -9,7 +9,9 @@ class RemindBooksContinued
         arr << { name: book.name, latest_chapters: unread_chapters.map(&:name) }
       end
 
-      SendSmsJob.perform_now(to: user.mobile, template: 'books_continued', books: books) if books.present?
+      if books.present?
+        SendSmsJob.perform_now(to: user.mobile, template: 'books_continued', books: books, user_name: user.name)
+      end
     end
   end
 end

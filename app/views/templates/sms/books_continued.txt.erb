@@ -1,5 +1,5 @@
-【wesson_yi】您好，小说
+<%= "【麦芽糖】#{user_name}您好，小说" %>
 <% books.each do |book| %>
-  <%= "「#{book[:name]}」已更新《#{book[:latest_chapters].join('》,《')}》" %>
+  <%= "《#{book[:name]}》已更新「#{book[:latest_chapters].join('」,「')}」" %>
 <% end %>
-可以登录起点中文网进行阅读啦 ~\(≧▽≦)/~退订回N
+~\(≧▽≦)/~
