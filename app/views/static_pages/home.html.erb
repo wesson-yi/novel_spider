@@ -1,0 +1,34 @@
+<% provide(:title, "") %>
+
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>欢迎使用读者提醒服务</h1>
+    <h2>
+      通过短信实时提醒小说更新信息（仅限<a href="https://www.qidian.com/">起点</a>）
+    </h2>
+    <%# <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
+
+  <%#= link_to image_tag("rails.png", alt: "Rails logo"),
+    'http://rubyonrails.org/' %>
+  <%#= link_to image_tag("kitten.jpg", alt: "This the best kity cat!"), '#'
+%>
+<% end %>
