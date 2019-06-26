@@ -6,6 +6,9 @@ class User < ApplicationRecord
   validates :mobile, presence: true, unless: ->(user) { user.email.present? }
   validates :email, presence: true, unless: ->(user) { user.mobile.present? }
 
+  validates :email, uniqueness: true, allow_blank: true
+  validates :mobile, uniqueness: true, allow_blank: true
+
   has_many :reading_records, dependent: :destroy
   has_many :books, through: :reading_records
 

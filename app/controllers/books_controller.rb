@@ -21,20 +21,12 @@ class BooksController < ApplicationController
   def edit
   end
 
-  # POST /books
-  # POST /books.json
   def create
-    @book = Book.new(book_params)
+    @book = Book.find_or_initialize_by(ywid: book_params['ywid'])
+    @book.update!(book_params)
+    ReadingRecord.find_or_create_by!(user: current_user, book: @book)
 
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to @current_user, notice: 'Book was successfully created.'
   end
 
   # PATCH/PUT /books/1
@@ -70,6 +62,8 @@ class BooksController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def book_params
-    params.fetch(:book, {})
+    # params.fetch(:book, {})
+    # params.fetch(:book).permit(:name, :ywid, :author_name)
+    params.require(:book).permit(:name, :ywid, :author_name)
   end
 end
