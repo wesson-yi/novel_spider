@@ -12,8 +12,9 @@ class User < ApplicationRecord
   has_many :reading_records, dependent: :destroy
   has_many :books, through: :reading_records
 
-  def unread_chapters(book)
-    book.chapters.where('id > ?', reading_records.by_book(book).first.latest_chapter_id)
+  def unread_chapters_by_book(book)
+    latest_read_chapter_id = reading_records.by_book(book).first.latest_chapter_id
+    latest_read_chapter_id.present? ? book.chapters.where('id > ?', latest_read_chapter_id) : [book.chapters.last]
   end
 
   # 持久化会话，在数据库记住用户
