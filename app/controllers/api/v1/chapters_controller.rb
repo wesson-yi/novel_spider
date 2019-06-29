@@ -5,7 +5,8 @@ class Api::V1::ChaptersController < Api::V1::BaseController
     book = Book.find_by ywid: params[:book_ywid]
 
     params.permit(chapters: [:ywid, :name])[:chapters].each do |chapter|
-      book.chapters.create!(chapter.to_h)
+      chapter_db = book.chapters.find_or_initialize_by(ywid: chapter[:ywid])
+      chapter_db.update! chapter
     end
   end
 end
