@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_143859) do
+ActiveRecord::Schema.define(version: 2019_07_09_154024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_05_143859) do
     t.integer "latest_chapter_id", comment: "最近阅读章节 id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "deleted", default: false, comment: "是否删除"
     t.index ["book_id", "user_id"], name: "index_reading_records_on_book_id_and_user_id"
   end
 

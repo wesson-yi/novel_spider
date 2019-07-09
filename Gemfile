@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'haml'
+gem 'haml-rails'
 
 # Ruby 语法、风格检查
 # 文档：https://docs.rubocop.org/en/stable
@@ -67,8 +67,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
-
-  gem "erb2haml"
 end
 
 group :test do

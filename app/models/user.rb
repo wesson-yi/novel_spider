@@ -13,7 +13,8 @@ class User < ApplicationRecord
   has_many :books, through: :reading_records
 
   def unread_chapters_by_book(book)
-    latest_read_chapter_id = reading_records.by_book(book).first.latest_chapter_id
+    latest_read_chapter_id = reading_records.by_book(book).latest_chapter_id
+
     latest_read_chapter_id.present? ? book.chapters.where('id > ?', latest_read_chapter_id) : [book.chapters.last]
   end
 

@@ -36,11 +36,8 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    current_user.reading_records.by_book(@book).update(deleted: true)
+    redirect_to books_url, notice: '删除成功！'
   end
 
   private
