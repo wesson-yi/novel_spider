@@ -38,4 +38,12 @@ class User < ApplicationRecord
   def self.new_token
     SecureRandom.urlsafe_base64
   end
+
+  # 如果指定的令牌和摘要匹配，返回 true
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+
+    BCrypt::Password.new(digest).is_password?(token)
+  end
 end
