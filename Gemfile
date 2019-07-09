@@ -67,6 +67,8 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
+
+  gem "erb2haml"
 end
 
 group :test do

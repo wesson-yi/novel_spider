@@ -1,0 +1,15 @@
+- provide(:title, '麦芽糖')
+- if logged_in?
+  .row
+    %aside.col-md-4
+      %section.user_info
+      %section
+      %section.micropost_form
+    .col-md-8
+      %h3 Micropost Feed
+- else
+  .center.jumbotron
+    %h1 欢迎使用读者提醒服务
+    %h2
+      通过短信实时提醒小说更新信息（仅限
+      %a{:href => "https://www.qidian.com/"} 起点）
