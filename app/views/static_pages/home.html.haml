@@ -1,15 +1,196 @@
-- provide(:title, '麦芽糖')
-- if logged_in?
-  .row
-    %aside.col-md-4
-      %section.user_info
-      %section
-      %section.micropost_form
-    .col-md-8
-      %h3 Micropost Feed
-- else
-  .center.jumbotron
-    %h1 欢迎使用读者提醒服务
-    %h2
-      通过短信实时提醒小说更新信息（仅限
-      %a{:href => "https://www.qidian.com/"} 起点）
+!!!
+%html{:lang => "en"}
+  %head
+    = javascript_include_tag "hammer-2.0.8"
+  %body
+    / notification for small viewports and landscape oriented smartphones
+    .device-notification
+      %a.device-notification--logo{:href => "#0"}
+        %img{:alt => "Global", :src => "#{asset_path('logo.png')}"}/
+        %p Global
+      %p.device-notification--message Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.
+    .perspective.effect-rotate-left
+      .container
+        .outer-nav--return
+        #viewport.l-viewport
+          .l-wrapper
+            %header.header
+              %a.header--logo{:href => "#0"}
+                %img{:alt => "Global", :src => "#{asset_path('logo.png')}"}/
+                %p Global
+              %button.header--cta.cta Hire Us
+              .header--nav-toggle
+                %span
+            %nav.l-side-nav
+              %ul.side-nav
+                %li.is-active
+                  %span Home
+                %li
+                  %span Works
+                %li
+                  %span About
+                %li
+                  %span Contact
+                %li
+                  %span Hire us
+            %ul.l-main-content.main-content
+              %li.l-section.section.section--is-active
+                .intro
+                  .intro--banner
+                    %h1
+                      Your next
+                      %br>/
+                      interactive
+                      %br>/
+                      experience
+                    %button.cta
+                      Hire Us
+                      %svg#Layer_1{:style => "enable-background:new 0 0 150 118;", :version => "1.1", :viewbox => "0 0 150 118", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                        %g{:transform => "translate(0.000000,118.000000) scale(0.100000,-0.100000)"}
+                          %path{:d => "M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"}
+                      %span.btn-background
+                    %img{:alt => "Welcome", :src => "#{asset_path('introduction-visual.png')}"}/
+
+                  .intro--options
+                    %a{:href => "#0"}
+                      %h3 Metiew &amp; Smith
+                      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+                    %a{:href => "#0"}
+                      %h3 Fantasy interactive
+                      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+                    %a{:href => "#0"}
+                      %h3 Paul &amp; shark
+                      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+              %li.l-section.section
+                .work
+                  %h2 Selected work
+                  .work--lockup
+                    %ul.slider
+                      %li.slider--item.slider--item-left
+                        %a{:href => "#0"}
+                          .slider--item-image
+                            %img{:alt => "Victory", :src => "#{asset_path 'work-victory.jpg'}"}/
+                          %p.slider--item-title Victory
+                          %p.slider--item-description Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+                      %li.slider--item.slider--item-center
+                        %a{:href => "#0"}
+                          .slider--item-image
+                            %img{:alt => "Metiew and Smith", :src => "#{asset_path 'work-metiew-smith.jpg'}"}/
+                          %p.slider--item-title Metiew &amp; Smith
+                          %p.slider--item-description Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+                      %li.slider--item.slider--item-right
+                        %a{:href => "#0"}
+                          .slider--item-image
+                            %img{:alt => "Alex Nowak", :src => "#{asset_path 'work-alex-nowak.jpg'}"}/
+                          %p.slider--item-title Alex Nowak
+                          %p.slider--item-description Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+                    .slider--prev
+                      %svg#Layer_1{:style => "enable-background:new 0 0 150 118;", :version => "1.1", :viewbox => "0 0 150 118", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                        %g{:transform => "translate(0.000000,118.000000) scale(0.100000,-0.100000)"}
+                          %path{:d => "M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29\n                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180\n                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"}
+                    .slider--next
+                      %svg#Layer_1{:style => "enable-background:new 0 0 150 118;", :version => "1.1", :viewbox => "0 0 150 118", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                        %g{:transform => "translate(0.000000,118.000000) scale(0.100000,-0.100000)"}
+                          %path{:d => "M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"}
+              %li.l-section.section
+                .about
+                  .about--banner
+                    %h2
+                      We
+                      %br>/
+                      believe in
+                      %br>/
+                      passionate
+                      %br>/
+                      people
+                    %a{:href => "#0"}
+                      Career
+                      %span
+                        %svg#Layer_1{:style => "enable-background:new 0 0 150 118;", :version => "1.1", :viewbox => "0 0 150 118", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                          %g{:transform => "translate(0.000000,118.000000) scale(0.100000,-0.100000)"}
+                            %path{:d => "M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"}
+                    %img{:alt => "About Us", :src => "#{asset_path 'about-visual.png'}"}/
+                  .about--options
+                    %a{:href => "#0"}
+                      %h3 Winners
+                    %a{:href => "#0"}
+                      %h3 Philosophy
+                    %a{:href => "#0"}
+                      %h3 History
+              %li.l-section.section
+                .contact
+                  .contact--lockup
+                    .modal
+                      .modal--information
+                        %p Pawia 5, 31-154 Kraków, Poland
+                        %a{:href => "mailto:ouremail@gmail.com"} ouremail@gmail.com
+                        %a{:href => "tel:+148126287560"} +48 12 628 75 60
+                      %ul.modal--options
+                        %li
+                          %a{:href => "#0"} Bēhance
+                        %li
+                          %a{:href => "#0"} dribbble
+                        %li
+                          %a{:href => "mailto:ouremail@gmail.com"} Contact Us
+              %li.l-section.section
+                .hire
+                  %h2 You want us to do
+                  / checkout formspree.io for easy form setup
+                  %form.work-request
+                    .work-request--options
+                      %span.options-a
+                        %input#opt-1{:type => "checkbox", :value => "app design"}/
+                        %label{:for => "opt-1"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          App Design
+                        %input#opt-2{:type => "checkbox", :value => "graphic design"}/
+                        %label{:for => "opt-2"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          Graphic Design
+                        %input#opt-3{:type => "checkbox", :value => "motion design"}/
+                        %label{:for => "opt-3"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          Motion Design
+                      %span.options-b
+                        %input#opt-4{:type => "checkbox", :value => "ux design"}/
+                        %label{:for => "opt-4"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          UX Design
+                        %input#opt-5{:type => "checkbox", :value => "webdesign"}/
+                        %label{:for => "opt-5"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          Webdesign
+                        %input#opt-6{:type => "checkbox", :value => "marketing"}/
+                        %label{:for => "opt-6"}
+                          %svg#Layer_1{:style => "enable-background:new 0 0 150 111;", :version => "1.1", :viewbox => "0 0 150 111", :x => "0px", "xml:space" => "preserve", :xmlns => "http://www.w3.org/2000/svg", "xmlns:xlink" => "http://www.w3.org/1999/xlink", :y => "0px"}
+                            %g{:transform => "translate(0.000000,111.000000) scale(0.100000,-0.100000)"}
+                              %path{:d => "M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"}
+                          Marketing
+                    .work-request--information
+                      .information-name
+                        %input#name{:spellcheck => "false", :type => "text"}/
+                        %label{:for => "name"} Name
+                      .information-email
+                        %input#email{:spellcheck => "false", :type => "email"}/
+                        %label{:for => "email"} Email
+                    %input{:type => "submit", :value => "Send Request"}/
+      %ul.outer-nav
+        %li.is-active Home
+        %li Works
+        %li About
+        %li Contact
+        %li Hire us
+    -# %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"}
+    -# :javascript
+      window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')
+    -# %script{:src => "#{asset-path 'functions-min.js'}"}

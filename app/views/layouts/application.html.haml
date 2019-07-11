@@ -2,12 +2,20 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "HTML5 website 博客 分享", :name => "description"}
+    %meta{:content => "麦芽糖, html, sass, jquery", :name => "keywords"}
+    %meta{:content => "Wesson Yi", :name => "author"}
+    -# %link{:href => "assets/css/main.css", :rel => "stylesheet"}/
+
     %title= full_title(yield(:title))
     = render 'layouts/rails_default'
   %body
-    = render 'layouts/header'
-    .container
-      = render 'layouts/flash'
-      = yield
-      = render 'layouts/footer'
-      = debug(params) if Rails.env.development?
+    -# = render 'layouts/header'
+    -# .container
+      -# = render 'layouts/flash'
+    = yield
+    -# = render 'layouts/footer'
+    = debug(params) if Rails.env.development? && params[:controller] != 'static_pages'

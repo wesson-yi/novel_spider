@@ -1,3 +1,26 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// BASE
+@import 'static_pages/base/vars';
+@import 'static_pages/base/fonts';
+@import 'static_pages/base/normalize';
+@import 'static_pages/base/selection-colors';
+@import 'static_pages/base/body-element';
+
+// LAYOUTS
+@import 'static_pages/layouts/grid';
+
+// MODULES
+@import 'static_pages/modules/_device-notification';
+@import 'static_pages/modules/_section';
+@import 'static_pages/modules/_header';
+@import 'static_pages/modules/_side-nav';
+@import 'static_pages/modules/_intro';
+@import 'static_pages/modules/_work';
+@import 'static_pages/modules/_about';
+@import 'static_pages/modules/_contact';
+@import 'static_pages/modules/_hire';
+@import 'static_pages/modules/_outer-nav';
+
