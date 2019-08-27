@@ -15,7 +15,7 @@ class ERBExecutor
       params.each do |key, value|
         b.local_variable_set(key, value)
       end
-      ERB.new(template).result b
+      ERB.new(template, trim_mode: '-').result b
     end
   end
 

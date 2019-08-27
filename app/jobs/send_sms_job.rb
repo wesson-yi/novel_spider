@@ -4,7 +4,7 @@ class SendSmsJob < ApplicationJob
   #   to 收件人
   #     '15136167907'
   #   template 需要使用的模板
-  #     'remind_books_continued'
+  #     'books_continued'
   #   books 书目更新章节
   #     [{ name: 'name1', latest_chapters: ['chapter1', 'chapter2'] }]
   #

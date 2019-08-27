@@ -45,7 +45,7 @@ set :puma_bind, 'tcp://0.0.0.0:3100'
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 namespace :deploy do
-  task :copy_config do
+  task :upload_config do
     on roles(:all) do |_host|
       %w[database.yml settings.yml credentials.yml.enc master.key].each do |f|
         upload! 'config/' + f, '/srv/www/novel_spider/shared/config/' + f
@@ -53,6 +53,14 @@ namespace :deploy do
 
       %w[puma.rb].each do |f|
         upload! 'config/' + f, '/srv/www/novel_spider/shared/' + f
+      end
+    end
+  end
+
+  task :download_config do
+    on roles(:all) do |_host|
+      %w[database.yml settings.yml credentials.yml.enc master.key].each do |f|
+        download! '/srv/www/novel_spider/shared/config/' + f, 'config/' + f
       end
     end
   end
