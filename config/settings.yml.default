@@ -1,0 +1,18 @@
+defaults: &defaults
+  vendors:
+    fake:
+      host: http://dev.maikeji.cn:3100
+    submail:
+      host: https://api.mysubmail.com
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  reminder:
+    sms:
+      adapter: Fake::SmsSender
+
+production:
+  <<: *defaults

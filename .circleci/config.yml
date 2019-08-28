@@ -1,0 +1,49 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    working_directory: ~/wesson_yi/novel_spider
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+      RAILS_ENV: test
+      USING_OFFICIAL_GEM_SOURCE: 1
+
+    docker:
+      - image: circleci/ruby:2.6.0-node-browsers
+      - image: circleci/postgres:9.4
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+            cp config/database.yml.default config/database.yml
+            cp config/settings.yml.default config/settings.yml
+            bundle exec rake db:create db:migrate db:seed
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            bundle exec rails test
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
