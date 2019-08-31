@@ -49,6 +49,8 @@ gem 'rest-client'
 
 gem 'whenever', require: false
 
+gem 'newrelic_rpm'
+
 group :development, :test do
   # Call 'pry-byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
