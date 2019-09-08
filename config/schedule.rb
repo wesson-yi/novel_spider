@@ -28,6 +28,6 @@ ENV.each { |k, v| env(k, v) }
 
 set :output, './log/cron_log.log'
 
-every 1.minute do
+every 3.minutes do
   runner 'RemindBooksContinued.perform'
 end
