@@ -1,0 +1,37 @@
+= provide(:title, '注册')
+= provide(:button_text, '创建账号')
+
+%h1 注 册
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@user, url: signup_path) do |f|
+      = render 'shared/error_messages', object: f.object
+
+      = f.label :用户名
+      = f.text_field :name, class: 'form-control'
+
+      = f.label :手机号
+      = f.phone_field :mobile, class: 'form-control'
+      = f.button "发送验证码", type: 'button', id: "send-activation-token", class: "btn btn-default"
+
+      = f.label :短信验证码
+      = text_field_tag :activation_token, nil, class: 'form-control'
+
+      = f.label :密码
+      = f.password_field :password, class: 'form-control'
+
+      = f.label :password_confirmation, "确认密码"
+      = f.password_field :password_confirmation, class: 'form-control'
+
+      = f.submit "创建账号", class: "btn btn-primary"
+
+:javascript
+  $(function() {
+    $("#send-activation-token").on('click', function() {
+      var url = '/users/activation_token';
+
+      $.get(url, function(response) {
+        console.log('-----------')
+      })
+    });
+  })

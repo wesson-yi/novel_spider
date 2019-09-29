@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token
 
   validates :mobile, presence: true, unless: ->(user) { user.email.present? }
   validates :email, presence: true, unless: ->(user) { user.mobile.present? }
@@ -27,24 +26,5 @@ class User < ApplicationRecord
   # 忘记用户
   def forget
     update(remember_digest: nil)
-  end
-
-  # 返回指定字符串的哈希摘要
-  def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-
-  # 返回一个随机令牌
-  def self.new_token
-    SecureRandom.urlsafe_base64
-  end
-
-  # 如果指定的令牌和摘要匹配，返回 true
-  def authenticated?(attribute, token)
-    digest = send("#{attribute}_digest")
-    return false if digest.nil?
-
-    BCrypt::Password.new(digest).is_password?(token)
   end
 end
