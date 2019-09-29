@@ -79,10 +79,10 @@ span.picture {
 }
 
 #error_explanation {
- color: red;
+//  color: red;
  ul {
-  color: red;
-  margin: 0 0 30px 0;
+  // color: red;
+  // margin: 0 0 30px 0;
  }
 }
 .field_with_errors {
@@ -224,7 +224,7 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  line-height: 50px;
   font-weight: bold;
   &:hover {
     color: white;
@@ -236,6 +236,11 @@ p {
 /* universal */
 body {
   padding-top: 60px;
+  a:hover {
+    color: $gray-darker;
+    background: transparent;
+    text-decoration: none;
+  }
 }
 
 section {
@@ -261,7 +266,7 @@ footer {
   color: $gray-light;
   a {
     color: $gray;
-    &:hovor {
+    &:hover {
       color: $gray-darker;
     }
   }

@@ -17,13 +17,11 @@ class User < ApplicationRecord
     latest_read_chapter_id.present? ? book.chapters.where('id > ?', latest_read_chapter_id) : [book.chapters.last]
   end
 
-  # 持久化会话，在数据库记住用户
   def remember
     self.remember_token = User.new_token
     update(remember_digest: User.digest(remember_token))
   end
 
-  # 忘记用户
   def forget
     update(remember_digest: nil)
   end

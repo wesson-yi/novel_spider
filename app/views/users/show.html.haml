@@ -1,4 +1,5 @@
 - provide(:title, @user.name)
+
 .row
   %aside.col-md-4
     %section.user_info
@@ -6,10 +7,10 @@
         = @user.name
     %section.stats
     %section.micropost_form
-      = render 'shared/book_form'
+      -# = render 'shared/book_form'
   .col-md-8
     - if @books.any?
       %h3
-        Books (#{@books.count})
+        订阅
       %ol.microposts
         = render @books

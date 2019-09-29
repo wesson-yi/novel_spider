@@ -10,8 +10,7 @@ class Verification < ApplicationRecord
   EXPIRED_MINUTES = 15
 
   def self.new_token
-    '000000'
-    # SecureRandom.rand(999999)
+    SecureRandom.rand(10**6)
   end
 
   def self.digest(string)
@@ -36,7 +35,7 @@ class Verification < ApplicationRecord
 
     def verify(source, received_code)
       verification_code = Verification.find_by(source: source)
-      return { err_code: 'not_found', message: '尚未发送验证码或者验证法已失效' } if verification_code.nil?
+      return { err_code: 'not_found', message: '尚未发送验证码或者验证码已失效' } if verification_code.nil?
 
       verification_code.send :verify, received_code
     end

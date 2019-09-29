@@ -1,6 +1,9 @@
 - provide(:title, '麦芽糖')
+
 - if logged_in?
-  .row
+  .center.jumbotron
+    %h1 啊哈~哈哈~~
+  -#.row
     %aside.col-md-4
       %section.user_info
       %section
@@ -9,7 +12,8 @@
       %h3 Micropost Feed
 - else
   .center.jumbotron
-    %h1 欢迎使用读者提醒服务
+    %h1 欢迎订阅《赘婿》更新提醒
     %h2
-      通过短信实时提醒小说更新信息（仅限
-      %a{:href => "https://www.qidian.com/"} 起点）
+      通过短信实时提醒小说更新信息（ 仅限
+      %a{:href => "https://www.qidian.com/"}起点
+      ）

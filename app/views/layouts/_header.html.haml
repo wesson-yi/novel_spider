@@ -4,19 +4,20 @@
       = link_to "麦芽糖", root_path, id: "logo"
       %nav
         %ul.nav.navbar-nav.navbar-right
-          %li= link_to "首页", root_path
+          - unless logged_in?
+            %li= link_to "首页", root_path
           %li= link_to "帮助", help_path
           - if logged_in?
             %li= link_to "书架", books_path
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-                Account
+                账户
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to "Profile", current_user
-                %li= link_to "Settings", edit_user_path(current_user)
+                %li
+                  = link_to "个人中心", current_user
                 %li.divider
                 %li
-                  = link_to "Log out", logout_path, method: "delete"
+                  = link_to "退出", logout_path, method: "delete"
           - else
             %li= link_to "登录", login_path

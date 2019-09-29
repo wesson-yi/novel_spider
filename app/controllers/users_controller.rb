@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     return unless validate_verification_code(user_params[:mobile], verification_code)
 
     if @user.save
-      redirect_to root_url
+      log_in @user
+      redirect_to books_url
     else
       render 'new'
     end
