@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
+      book = Book.find_by(name: '赘婿')
+      current_user.reading_records.find_or_create_by(book: book, chapter: book.chapters.last)
       redirect_to books_url
     else
       render 'new'
