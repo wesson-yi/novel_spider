@@ -9,9 +9,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def activation_token
-  end
-
   def create
     @user = User.new(user_params)
     verification_code = params[:activation_token]

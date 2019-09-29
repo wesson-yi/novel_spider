@@ -4,9 +4,6 @@ require 'api_constraints'
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  # get 'static_pages/home'
-  # get '/static_pages/home'
-  # get '/home'
   get '/help',    to: 'static_pages#help' # , as: 'helf'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
@@ -19,11 +16,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
 
   resources :books
-  resources :users, only: [:show, :index, :edit] do
-    collection do
-      get 'activation_token'
-    end
-  end
+  resources :users, only: [:show, :index, :edit]
+
+  resources :verifications, only: [:create]
 
   namespace :api, defaults: { format: :json } do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do

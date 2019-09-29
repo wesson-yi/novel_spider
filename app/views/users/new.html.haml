@@ -28,10 +28,11 @@
 :javascript
   $(function() {
     $("#send-activation-token").on('click', function() {
-      var url = '/users/activation_token';
+      var url = '/verifications';
+      var mobile = $('#user_mobile')[0].value;
 
-      $.get(url, function(response) {
-        console.log('-----------')
+      $.post(url, { mobile }, function(response) {
+        console.log(response)
       })
     });
   })
