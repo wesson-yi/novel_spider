@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(version: 2019_09_29_101351) do
     t.index ["name"], name: "index_users_on_name"
   end
 
-  create_table "verification_codes", force: :cascade do |t|
-    t.string "token", null: false, comment: "验证码"
-    t.string "source", null: false, comment: "手机号/邮箱"
-    t.datetime "expired_at", comment: "失效时间"
-    t.integer "available_times", comment: "可使用次数"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "verifications", force: :cascade do |t|
     t.string "digest", null: false, comment: "验证码"
     t.string "source", null: false, comment: "手机号/邮箱"
@@ -76,5 +67,4 @@ ActiveRecord::Schema.define(version: 2019_09_29_101351) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 end
