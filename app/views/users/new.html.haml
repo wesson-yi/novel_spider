@@ -29,14 +29,33 @@
 :javascript
   $(function() {
     $("#send-activation-token").on('click', function() {
-      var url = '/verifications';
-      var mobile = $('#user_mobile')[0].value;
+      $(this).attr('disabled','disabled')
+
+      var url = '/verifications'
+      var mobile = $('#user_mobile')[0].value
 
       $.post(url, { mobile }, function(response) {
         console.log(response)
       })
-    });
+      getRandomCode()
+    })
   })
+
+  var time = 60
+  function getRandomCode() {
+    if (time === 0) {
+        time = 60
+        $("#send-activation-token").text('发送验证码')
+        $("#send-activation-token")[0].removeAttribute('disabled')
+        return
+    } else {
+        time--
+        $("#send-activation-token").text(time + 's')
+    }
+    setTimeout(function() {
+      getRandomCode()
+    }, 1000)
+  }
 :scss
   .signup {
     .verification {
